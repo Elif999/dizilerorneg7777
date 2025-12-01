@@ -2,26 +2,26 @@ namespace WinFormsApp47
 {
     public partial class Form1 : Form
     {
-        public Form1()// ****** BU KODUN MANTIĞINI YAPAY ZEKADAN ÖĞREN*************
+        public Form1()
         {
             InitializeComponent();
         }
 
         int[,] dizi;
         int satirsayisi;
-        int sütunsayisi;
+        int sÃ¼tunsayisi;
 
         private void button1_Click(object sender, EventArgs e)
         {
-            satirsayisi = Convert.ToInt32(textBox1.Text);//satir sayisini texboxtan aldık
-            sütunsayisi = Convert.ToInt32(textBox2.Text);//sutun sayısını texboxtan aldık
-            dizi = new int[satirsayisi, sütunsayisi];//dizi formatında satır sayısını sutun sayısına dizi şekline formatına getirdik***//Bunda Neden new int koyduk
-            int rastgeleMin = Convert.ToInt32(textBox3.Text);//rastgele değer aralığını texboxtan aldık
-            int rastgeleMax = Convert.ToInt32(textBox4.Text);// rastgele değer aralığını texboxtan aldık
+            satirsayisi = Convert.ToInt32(textBox1.Text);//satir sayisini texboxtan aldÄ±k
+            sÃ¼tunsayisi = Convert.ToInt32(textBox2.Text);//sutun sayÄ±sÄ±nÄ± texboxtan aldÄ±k
+            dizi = new int[satirsayisi, sÃ¼tunsayisi];//dizi formatÄ±nda satÄ±r sayÄ±sÄ±nÄ± sutun sayÄ±sÄ±na dizi ÅŸekline formatÄ±na getirdik***//Bunda Neden new int koyduk
+            int rastgeleMin = Convert.ToInt32(textBox3.Text);//rastgele deÄŸer aralÄ±ÄŸÄ±nÄ± texboxtan aldÄ±k
+            int rastgeleMax = Convert.ToInt32(textBox4.Text);// rastgele deÄŸer aralÄ±ÄŸÄ±nÄ± texboxtan aldÄ±k
             Random rastgele = new Random();
             for (int x = 0; x < satirsayisi; x++)
             {
-                for (int y = 0; y < sütunsayisi; y++)
+                for (int y = 0; y < sÃ¼tunsayisi; y++)
                 {
                     dizi[x, y] = rastgele.Next(rastgeleMin, rastgeleMax);
                 }
@@ -32,7 +32,7 @@ namespace WinFormsApp47
         {
             for(int x=0;x<satirsayisi;x++)
             {
-                for(int y=0;y<sütunsayisi;y++)
+                for(int y=0;y<sÃ¼tunsayisi;y++)
                 {
                     listBox1.Items.Add(x + ","+y + "=>" + dizi[x, y]);
                 }
@@ -42,40 +42,3 @@ namespace WinFormsApp47
 }
 /*
  
-Dış Döngü (Satırlar)
-İlk Dönüş (x = 0):
-
-İç döngü başlar.
-y 0'dan 2'ye kadar döner (0, 1, 2).
-Bu döngüde dizi[0, 0], dizi[0, 1], ve dizi[0, 2] elemanlarına rastgele sayılar atanır.
-İkinci Dönüş (x = 1):
-
-İç döngü tekrar başlar.
-y yine 0'dan 2'ye kadar döner (0, 1, 2).
-Bu döngüde dizi[1, 0], dizi[1, 1], ve dizi[1, 2] elemanlarına rastgele sayılar atanır.
-
-*/
-
-
-
-/*
- You=neden sadece 1 ve 9 değerleri alıyorda aralığındaki değerleri niye ve nasıl alıyorki 
-
-BLACKBOX.ai= Random kuralıdır*                                                                                                                                  
-Minimum ve Maksimum Değerler: Random.Next(rastgeleMin, rastgeleMax) metodu, belirtilen aralıkta rastgele bir tamsayı üretir. 
-Burada rastgeleMin değeri dahil edilirken, rastgeleMax değeri hariç tutulur. 
-Yani, eğer rastgeleMin 1 ve rastgeleMax 10 olarak ayarlanmışsa, üretilen rastgele sayılar 1 ile 9 arasında olacaktır.
-
-Aralıkta Neden Diğer Değerler Alınıyor?
-Aralık Tanımı: rastgeleMin ve rastgeleMax değerleri arasındaki tüm tamsayılar, rastgele.Next metodu tarafından üretilir.
-Bu durumda, 1 ile 9 arasındaki tüm tamsayılar (1, 2, 3, 4, 5, 6, 7, 8, 9) geçerli sonuçlar olarak dönebilir.
-
-Örnek Durum
-Eğer kullanıcı rastgeleMin olarak 1 ve rastgeleMax olarak 10 girerse:
-Üretilen rastgele sayılar: 1, 2, 3, 4, 5, 6, 7, 8, 9
-10 sayısı dahil edilmez çünkü rastgeleMax değeri hariç tutulur.
-
-Sonuç
-Rastgele Sayı Üretimi: Random.Next metodu, belirlenen aralıkta rastgele sayılar üretmek için kullanılır. 
-Bu sayede, kullanıcı tarafından belirlenen minimum ve maksimum değerler arasında rastgele sayılar elde edilir.         
-*/
